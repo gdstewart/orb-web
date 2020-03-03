@@ -1,21 +1,12 @@
 import { observable } from 'mobx';
 
 class Playback {
-    @observable playbackState;
-    @observable stationLoaded = false;
-    @observable mediaPlayerClosed = true;
+    @observable playerLoaded = false;
+    @observable playing = false;
     @observable stationError = false;
     @observable networkError = false;
     @observable repeatSpacer;
-    structure = observable({
-        id: undefined,
-        url: undefined,
-        title: undefined,
-        artist: undefined,
-        artwork: undefined,
-        album: undefined,
-        description: undefined
-    });
+    @observable playbackInfo = {};
 }
 
 export default new Playback();

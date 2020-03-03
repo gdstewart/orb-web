@@ -4,7 +4,7 @@ import StationsList from "../components/stationslist";
 export default class Stations extends Component {
 	render() {
 		return (
-			<div className="section">
+			<div className="section zero-margin column">
 				<StationsList />
 			</div>
 		)

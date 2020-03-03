@@ -7,7 +7,7 @@ export default class Navbar extends Component {
         super(props);
         this.state = {
             currentDate: Moment().format("MMMM D YYYY"),
-            currentTime: Moment().format("h:mm:ssa z"),
+            currentTime: Moment().format("h:mma z"),
             currentTimezone: Moment.tz(Moment.tz.guess()).zoneAbbr()
         }
     }
@@ -15,7 +15,7 @@ export default class Navbar extends Component {
     componentDidMount() {
         this.interval = setInterval(() => this.setState({
             currentDate: Moment().format("MMMM D YYYY"),
-            currentTime: Moment().format("h:mm:ssa z"),
+            currentTime: Moment().format("h:mma z"),
             currentTimezone: Moment.tz(Moment.tz.guess()).zoneAbbr()
         }), 1000);
     }
@@ -31,25 +31,25 @@ export default class Navbar extends Component {
                     <li className="nav-item">
                         <Link
                             href="/">
-                            <div className="nav-link-logo fade-in hover-fade" />
+                            <div className="nav-link-logo fade-in hover-fade-opacity" />
                         </Link>
                     </li>
                     <li className="nav-item">
                         <Link
                             href="/">
-                            <a className="nav-link hover-fade">Stations</a>
+                            <a className="nav-link hover-fade-alpha">Stations</a>
                         </Link>
                     </li>
                     <li className="nav-item">
                         <Link
                             href="/schedules">
-                            <a className="nav-link hover-fade">Schedules</a>
+                            <a className="nav-link hover-fade-alpha">Schedules</a>
                         </Link>
                     </li>
                     <li className="nav-item">
                         <Link
                             href="/about">
-                            <a className="nav-link hover-fade">About</a>
+                            <a className="nav-link hover-fade-alpha">About</a>
                         </Link>
                     </li>
                     <li className="nav-item">

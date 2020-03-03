@@ -41,19 +41,16 @@ export default async function getCurrentShowTitle(station, num) {
             const response = await fetch(searchUrl);
             const info = await response.json();
             title = info["/stream"].current.combo;
-            var start = info["/stream"].current.start;
-            var end = info["/stream"].current.end;
-            var diff = end - start;
-            var hours = diff / 3600;
-            startTimestamp = "now";
-            endTimestamp = hours;
+            startTimestamp = info["/stream"].current.start;
+            endTimestamp = info["/stream"].current.end;
+            stationTimezone = "America/Los_Angeles";
         } else if (station === "Worldwide FM") {
             const searchUrl = "https://worldwidefm.airtime.pro/api/live-info";
             const response = await fetch(searchUrl);
             const info = await response.json();
-            title = info.current.name;
-            startTimestamp = info.current.starts;
-            endTimestamp = info.current.ends;
+            title = info.currentShow[0].name;
+            startTimestamp = info.currentShow[0].start_timestamp;
+            endTimestamp = info.currentShow[0].end_timestamp;
             stationTimezone = "Europe/London";
             /*} else if (station === "Seoul Community Radio") {
                 const searchUrl = "https://seoulcommunityradio.airtime.pro/api/live-info";
@@ -137,13 +134,17 @@ export default async function getCurrentShowTitle(station, num) {
             const response = await fetch(searchUrl);
             const info = await response.json();
             title = info.current_track.title;
-            if (title.startsWith("Foundation FM - "))
+            if (title.startsWith("Foundation FM - ") || title.startsWith("FOUNDATION_FM - "))
                 title = title.substr(16, title.length);
+            else if (title.startsWith("Foundation FM  - "))
+                title = title.substr(17, title.length);
             startTimestamp = info.current_track.start_time;
             if (title.startsWith("Brunch"))
                 endTimestamp = Moment(info.current_track.start_time).add(3, "h").format();
-            if (title.startsWith("The Catch") || title.startsWith("The Takeover"))
+            else if (title.startsWith("The Catch") || title.startsWith("Happy Hour"))
                 endTimestamp = Moment(info.current_track.start_time).add(2, "h").format();
+            else if (title.startsWith("The Takeover") || title.startsWith("Playlist"))
+                endTimestamp = Moment(info.current_track.start_time).add(1, "h").format();
             else
                 endTimestamp = "∞";
             stationTimezone = "Europe/London";
@@ -166,7 +167,7 @@ export default async function getCurrentShowTitle(station, num) {
             const searchUrl = "https://1020.live/player/meta/get";
             const response = await fetch(searchUrl);
             const info = await response.json();
-            title = info.mix;
+            startTimestamp = "Time unavailable";
             if (title.startsWith("1020 Archive")) endTimestamp = "∞";
         } else if (station === "Netil Radio") {
             const searchUrl = "https://studio.mixlr.com/api/stations/4/schedule.json";
@@ -174,6 +175,7 @@ export default async function getCurrentShowTitle(station, num) {
             const info = await response.json();
             title = info.on_air.show.title;
             if (title == null) title = "Archive";
+            startTimestamp = "Time unavailable";
             /*} else if (station === "Resonance FM") {
                 const searchUrl = "https://www.resonancefm.com/now-next.json";
                 const response = await fetch(searchUrl);
@@ -193,11 +195,13 @@ export default async function getCurrentShowTitle(station, num) {
             const response = await fetch(searchUrl);
             const info = await response.json();
             title = info.data[0].titles.primary + " - " + info.data[0].titles.secondary;
+            startTimestamp = "Time unavailable";
         } else if (station === "WFMU") {
             const searchUrl = "https://wfmu.org/wp-content/themes/wfmu-theme/library/php/includes/liveNow.php";
             const response = await fetch(searchUrl);
             const info = await response.json();
             title = info.show;
+            startTimestamp = "Time unavailable";
             /*} else if (station === "Hotel Radio Paris") {
                 const searchUrl = "https://hotelradioparis.com/getTrack?c=undefined";
                 title = await fetch(searchUrl); */
@@ -222,8 +226,10 @@ export default async function getCurrentShowTitle(station, num) {
             const response = await fetch(searchUrl);
             const info = await response.json();
             title = info.current_track.title;
+            startTimestamp = "Time unavailable";
             if (title.contains("lofi"))
                 endTimestamp = "∞";
+
         }
 
         if (title.endsWith(" "))
@@ -238,21 +244,28 @@ export default async function getCurrentShowTitle(station, num) {
             title = station;
 
         if (endTimestamp === "∞")
-            return { title: title, time: "∞" };
+            return { title: title, time: endTimestamp };
+        if (startTimestamp === "Time unavailable")
+            return { title: title, time: startTimestamp };
         if (startTimestamp === "now")
             return { title: title, time: startOf(Moment(), 0, "hour").format("h:mma") + "-" + startOf(Moment().add(endTimestamp, "h"), 0, "hour").format("h:mma") }
 
         if (stationTimezone != null && startTimestamp != null && endTimestamp != null) {
-            var startTime = Moment.tz(startTimestamp, stationTimezone);
+            var startTime, endTime;
+            if (/^\d+$/.test(startTimestamp)) {
+                startTime = Moment.tz(Moment.unix(startTimestamp), stationTimezone);
+                endTime = Moment.tz(Moment.unix(endTimestamp), stationTimezone);
+            } else {
+                startTime = Moment.tz(startTimestamp, stationTimezone);
+                endTime = Moment.tz(endTimestamp, stationTimezone);
+            }
             startTimeLocal = startOf(startTime.clone().tz(localTimezone), 30, "minute").format("h:mma");
-            var endTime = Moment.tz(endTimestamp, stationTimezone);
             endTimeLocal = startOf(endTime.clone().tz(localTimezone).add(20, "m"), 30, "minute").format("h:mma");
         }
 
         return { title: title, time: startTimeLocal != null && endTimeLocal != null ? startTimeLocal + "-" + endTimeLocal : "" };
 
     } catch (error) {
-        console.log(station);
         if (num === 100)
             return { title: station, time: startTimeLocal != null && endTimeLocal != null ? startTimeLocal + "-" + endTimeLocal : "" };
         else {
