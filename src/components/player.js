@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import ReactPlayer from "react-player";
 import { observer } from "mobx-react";
 import PlaybackStore from "../stores/playback";
+import StationStore from "../stores/station";
+import AppStore from "../stores/app";
 import { FaRegStopCircle, FaRegPlayCircle } from "react-icons/fa";
 import Link from "next/link";
 
@@ -13,17 +15,27 @@ export default class Player extends Component {
             playStopHoverState: " hover-fade-opacity"
         };
     }
-    componentDidMount() {
 
+    _refreshShow() {
+        PlaybackStore.playbackInfo.currentShow = StationStore.shows[PlaybackStore.playbackInfo.station].currentShow;
+    }
+
+    componentDidMount() {
+        this._refreshShow();
+        this.interval = setInterval(() => {
+            this._refreshShow();
+        }, 60000);
     }
 
     componentWillUnmount() {
-
+        clearInterval(this.interval);
     }
 
     render() {
         return (
-            <div className="player fade-in">
+            <div className="player fade-in" onClick={() => {
+                AppStore.showPopUp = false;
+            }}>
                 {PlaybackStore.playing ?
                     <ReactPlayer
                         url={PlaybackStore.playbackInfo.streamUrl}
@@ -38,7 +50,9 @@ export default class Player extends Component {
                     </li>
                     <li className="player-item">
                         <Link as={"/"} href={{ pathname: "/station", query: { name: PlaybackStore.playbackInfo.station } }}>
-                            <div className="player-station-body hover-fade-alpha">
+                            <div className="player-station-body hover-fade-alpha" onClick={() => {
+                                AppStore.loading = true;
+                            }}>
                                 <div className="player-station-body-show-title">
                                     {PlaybackStore.playbackInfo.currentShow}
                                 </div>
@@ -57,7 +71,7 @@ export default class Player extends Component {
                             }}
                             onClick={() => {
                                 this.setState({
-                                    playStopHoverState: " darkened"
+                                    playStopHoverState: ""
                                 })
                                 if (PlaybackStore.playing) {
                                     PlaybackStore.playing = false;

@@ -34,6 +34,10 @@ body {
     animation: fadeIn ease 1s;
 }
 
+.fade-in-fast {
+    animation: fadeIn ease 0.2s;
+}
+
 @keyframes fadeIn {
     0% {
     	opacity: 0
@@ -63,10 +67,37 @@ body {
     opacity: 1;
 }
 
+.disabled {
+    opacity: 0.4;
+}
+
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.pop-up {
+    background-color: black;
+    color: white;
+    padding: 1.25rem;
+}
+
+.pop-up-option {
+    font-size: 1.5rem;
+}
+
 .nav {
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 2;
     width: 100%;
     border-bottom: 2px solid #FFF;
     background-color: #000;
@@ -92,7 +123,7 @@ body {
     flex-direction: row;
 }
 
-.nav-link, .nav-text, .station-info-social-bar-item-text {
+.nav-link, .nav-date, .station-info-social-bar-item-text, .about-info-link-text {
 	color: #FFF;
 	background-image: none;
     text-decoration: none;
@@ -122,7 +153,8 @@ body {
 	display: flex;
     justify-content: flex-start;
     margin: 5vw;
-    margin-top: 2.5vw;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
     padding: 0;
 }
 
@@ -187,11 +219,6 @@ body {
     opacity: 1;
 }
 
-.stations-list-item-logo-inactive:hover {
-    cursor: default;
-    opacity: 0;
-}
-
 .stations-list-item-body {
 	min-width: 0;
     margin-left: 1.25rem;
@@ -229,13 +256,20 @@ body {
     }
 }
 
+@media only screen and (max-width: 540px) {
+    .nav-date {
+        display: none;
+    }
+}
+
 .station-back {
+    display: flex;
+    justify-content: flex-end;
     font-size: 5rem;
-    padding: 0 5vh;
 }
 
 .station-info {
-    padding: 0 calc(80px + 10vh) 0 0;
+    padding: 0 10vw 0 calc(10vw - 80px);
 }
 
 .station-info-logo, .station-info-logo-image {
@@ -293,6 +327,7 @@ body {
 
 .player {
     position: fixed;
+    z-index: 2;
     bottom: 0;
     width: 100%;
     border-top: 2px solid #FFF;
@@ -341,6 +376,11 @@ body {
 }
 
 .player-station-body-show-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 1.5rem;
 }
 
@@ -356,6 +396,50 @@ body {
 .player-play-stop-icon:hover {
     cursor: pointer;
     opacity: 0.4;
+}
+
+.about-info {
+    padding: 0 10vw 0 10vw;
+}
+
+.about-info-header {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-info-blurb {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.about-info-links {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 1rem;
+    padding-left: 0;
+    margin-bottom: 1rem;
+}
+
+.about-info-link {
+    display: flex;
+    padding-bottom: 0.5rem;
+}
+
+.about-info-link-icon {
+    font-size: 1.5rem;
+    padding-right: 0.6rem;
+}
+
+.about-info-link-text {
+    font-size: 1.1rem;
+}
+
+.about-info-image {
+    width: 50vw;
+}
+
+.about-info-image-credits {
+    font-size: 0.7rem;
 }
 
 .spacer-bottom {

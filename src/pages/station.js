@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import StationStore from "../stores/station";
 import PlaybackStore from "../stores/playback";
+import AppStore from "../stores/app";
 import StationsData from "../data/stationsdata";
 import ShowFetcher from "../utils/showfetcher";
 import { IoLogoTwitter, IoLogoInstagram, IoLogoFacebook, IoMdGlobe, IoMdArrowBack } from "react-icons/io";
@@ -71,6 +72,7 @@ export default class Station extends Component {
     }
 
     componentDidMount() {
+        AppStore.loading = false;
         if (this.props.query.name === "NTS 1") {
             setInterval(Promise.resolve(ShowFetcher("NTS 1", 0)).then(show => {
                 StationStore.shows["NTS 1"].currentShow = show.title;
@@ -109,37 +111,26 @@ export default class Station extends Component {
                                 });
                             }}
                             onClick={() => {
-                                if (!StationStore.shows[this.props.query.name].loading) {
-                                    if (PlaybackStore.playbackInfo.station === this.props.query.name && PlaybackStore.playing) {
+                                if (!StationStore.shows["NTS 1"].loading && !StationStore.shows["NTS 2"].loading && StationStore.shows["NTS 1"].currentShow !== "Offline" && StationStore.shows["NTS 2"].currentShow !== "Offline") {
+                                    if ((PlaybackStore.playbackInfo.station === "NTS 1" || PlaybackStore.playbackInfo.station === "NTS 2") && PlaybackStore.playing) {
                                         PlaybackStore.playing = false;
                                         this.setState({
                                             logoHoverState: ""
                                         })
                                     } else {
-                                        PlaybackStore.playing = false;
-                                        setTimeout(() => {
-                                            PlaybackStore.playbackInfo = {
-                                                station: this.props.query.name,
-                                                currentShow: StationStore.shows[this.props.query.name].currentShow,
-                                                image: this.state.station[0].image,
-                                                streamUrl: this.state.station[0].streamUrl
-                                            };
-                                            if (!PlaybackStore.playerLoaded)
-                                                PlaybackStore.playerLoaded = true;
-                                            PlaybackStore.playing = true;
-                                        }, 100);
+                                        AppStore.showPopUp = true;
                                     }
                                 }
                             }}>
-                            {PlaybackStore.playbackInfo.station === this.props.query.name && PlaybackStore.playing ? <FaStop className="station-info-logo-stop-icon" /> : <FaPlay className={"station-info-logo-play-icon" + this.state.logoHoverState} />}
-                            <img className="station-info-logo-image" src={this.state.station[0].image} />
+                            {!StationStore.shows["NTS 1"].loading && !StationStore.shows["NTS 2"].loading && StationStore.shows["NTS 1"].currentShow !== "Offline" && StationStore.shows["NTS 2"].currentShow !== "Offline" ? ((PlaybackStore.playbackInfo.station === "NTS 1" || PlaybackStore.playbackInfo.station === "NTS 2") && PlaybackStore.playing ? <FaStop className="station-info-logo-stop-icon" /> : <FaPlay className={"station-info-logo-play-icon" + this.state.logoHoverState} />) : null}
+                            <img className="station-info-logo-image" src={this.state.station[0].image} alt={"NTS"} />
                         </div>
                         <div className="station-info-name">
                             NTS
                         </div>
                         <div className="station-info-show-title">
-                            Currently playing on 1: {StationStore.shows["NTS 1"].currentShow}<br />
-                            Currently playing on 2: {StationStore.shows["NTS 2"].currentShow}
+                            Currently playing on NTS 1: {StationStore.shows["NTS 1"].currentShow}<br />
+                            Currently playing on NTS 2: {StationStore.shows["NTS 2"].currentShow}
                         </div>
                         <div className="station-info-description">
                             {this.state.station[0].description}
@@ -164,7 +155,7 @@ export default class Station extends Component {
                                 });
                             }}
                             onClick={() => {
-                                if (!StationStore.shows[this.props.query.name].loading) {
+                                if (!StationStore.shows[this.props.query.name].loading && StationStore.shows[this.props.query.name].currentShow !== "Offline") {
                                     if (PlaybackStore.playbackInfo.station === this.props.query.name && PlaybackStore.playing) {
                                         PlaybackStore.playing = false;
                                         this.setState({
@@ -186,8 +177,8 @@ export default class Station extends Component {
                                     }
                                 }
                             }}>
-                            {PlaybackStore.playbackInfo.station === this.props.query.name && PlaybackStore.playing ? <FaStop className="station-info-logo-stop-icon" /> : <FaPlay className={"station-info-logo-play-icon" + this.state.logoHoverState} />}
-                            <img className="station-info-logo-image" src={this.state.station[0].image} />
+                            {StationStore.shows[this.props.query.name].currentShow !== "Offline" ? (PlaybackStore.playbackInfo.station === this.props.query.name && PlaybackStore.playing ? <FaStop className="station-info-logo-stop-icon" /> : <FaPlay className={"station-info-logo-play-icon" + this.state.logoHoverState} />) : null}
+                            <img className="station-info-logo-image" src={this.state.station[0].image} alt={this.state.station[0].name} />
                         </div>
                         <div className="station-info-name">
                             {this.props.query.name}

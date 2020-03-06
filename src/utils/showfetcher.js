@@ -97,7 +97,7 @@ export default async function getCurrentShowTitle(station, num) {
             const info = await response.json();
             title = info.currentShow[0].name;
             if (title.startsWith("boxout.fm - "))
-                title = title.substr(12, title.length);
+                title = info.current.name;
             startTimestamp = info.currentShow[0].start_timestamp;
             endTimestamp = info.currentShow[0].end_timestamp;
             stationTimezone = "Asia/Kolkata";
@@ -232,13 +232,16 @@ export default async function getCurrentShowTitle(station, num) {
 
         }
 
+        console.log(title);
         if (title.endsWith(" "))
             title = title.substr(0, title.length - 1);
         if (title.startsWith(" - "))
             title = title.substr(3, title.length);
-        if (title.includes("&amp;"))
+        while (title.includes("&amp;"))
             title = title.replace("&amp;", "&");
-        if (title.includes("&#039;"))
+        while (title.includes("&apos;"))
+            title = title.replace("&apos;", "'");
+        while (title.includes("&#039;"))
             title = title.replace("&#039;", "'");
         if (title === "" || title === " ")
             title = station;
@@ -266,8 +269,8 @@ export default async function getCurrentShowTitle(station, num) {
         return { title: title, time: startTimeLocal != null && endTimeLocal != null ? startTimeLocal + "-" + endTimeLocal : "" };
 
     } catch (error) {
-        if (num === 100)
-            return { title: station, time: startTimeLocal != null && endTimeLocal != null ? startTimeLocal + "-" + endTimeLocal : "" };
+        if (num === 30)
+            return { title: "Offline", time: startTimeLocal != null && endTimeLocal != null ? startTimeLocal + "-" + endTimeLocal : "" };
         else {
             num++;
             return getCurrentShowTitle(station, num);
