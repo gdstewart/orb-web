@@ -16,13 +16,13 @@ export default class About extends Component {
                         orb: online radio broadcaster v1.0
                     </div>
                     <div className="about-info-blurb">
-                        orb is a fun tool that aggregates various online, non-terrestrial radio stations on a single site.
+                        orb is a handy tool that aggregates various online, non-terrestrial radio stations on a single site.
                     </div>
                     <div className="about-info-blurb">
                         Data is pulled from public APIs exposed by the various broadcasting softwares that these stations use. As a result, orb only uses radio stations where current stream information could be easily accessed.
                     </div>
                     <div className="about-info-blurb">
-                        So far the implementation is pretty minimal but someday I'd like to have notifications so that you can be alerted to when your favourite shows are being broadcasted.
+                        So far the implementation is pretty minimal but someday I'd like to set up notifications so that you can save your favourite shows and be alerted to when they are being broadcasted.
                     </div>
                     <div className="about-info-blurb">
                         You can visit me around the web at the links below:
