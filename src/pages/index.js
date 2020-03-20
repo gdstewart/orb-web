@@ -44,6 +44,8 @@ class StationsList extends Component {
 				StationStore.shows[station].currentShow = show.title;
 				StationStore.shows[station].time = show.time;
 				StationStore.shows[station].loading = false;
+				if (PlaybackStore.playbackInfo.station === station)
+					PlaybackStore.playbackInfo.currentShow = show.title;
 			});
 		})
 	}
