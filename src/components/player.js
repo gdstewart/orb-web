@@ -41,7 +41,8 @@ export default class Player extends Component {
                         url={PlaybackStore.playbackInfo.streamUrl}
                         playing
                         height={0}
-                        width={0} /> : null}
+                        width={0}
+                        playsinline /> : null}
                 <ul className="player-items">
                     <li className="player-item">
                         <div className="player-station-logo">
