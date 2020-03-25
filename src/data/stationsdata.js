@@ -1,7 +1,7 @@
 export default [
     {
         name: "NTS 1",
-        streamUrl: "http://stream-relay-geo.ntslive.net/stream",
+        streamUrl: "https://stream-relay-geo.ntslive.net/stream",
         websiteUrl: "https://nts.live/",
         image: "/images/stations/nts.png",
         description: "NTS is an online radio station based in London with studios in Los Angeles, Shanghai and Manchester. Broadcasting underground music live, 24/7.",
@@ -11,14 +11,14 @@ export default [
     },
     {
         name: "NTS 2",
-        streamUrl: "http://stream-relay-geo.ntslive.net/stream2",
+        streamUrl: "https://stream-relay-geo.ntslive.net/stream2",
         websiteUrl: "https://nts.live/",
         image: "/images/stations/nts.png",
         description: "NTS is an online radio station based in London with studios in Los Angeles, Shanghai and Manchester. Broadcasting underground music live, 24/7."
     },
     {
         name: "n10.as",
-        streamUrl: "http://n10as.out.airtime.pro:8000/n10as_a",
+        streamUrl: "https://n10as.out.airtime.pro/n10as_a",
         websiteUrl: "https://n10.as/",
         image: "/images/stations/n10as.png",
         description: "n10.as (pronounced “antennas”) is an online radio based out of a fourth floor studio above St-Hubert Plaza in Montreal, Quebec, Canada. We are creating an accessible gateway for people of any skill-set and aims to foster confidence and creativity by offering time, tools and training on how to produce a dream radio show. n10.as creates a safe arena for our community of contributors to explore their creative expression and build their networks. We are a non-profit organization that runs primarily on donations and the hard work of our dedicated volunteers.",
@@ -28,7 +28,7 @@ export default [
     },
     {
         name: "The Lot Radio",
-        streamUrl: "http://thelot.out.airtime.pro:8000/thelot_a",
+        streamUrl: "https://thelot.out.airtime.pro/thelot_a",
         websiteUrl: "https://thelotradio.com/",
         image: "/images/stations/thelotradio.png",
         description: "An independent online radio station live streaming 24/7 from a reclaimed shipping container on an empty lot in NYC.",
@@ -38,7 +38,7 @@ export default [
     },
     {
         name: "Dublab",
-        streamUrl: "http://dublab.out.airtime.pro:8000/dublab_a",
+        streamUrl: "https://dublab.out.airtime.pro/dublab_a",
         websiteUrl: "https://dublab.com/",
         image: "/images/stations/dublab.png",
         description: "Nonprofit radio station and creative collective dedicated to the growth of progressive music, arts and culture in L.A. since 1999.",
@@ -48,7 +48,7 @@ export default [
     },
     {
         name: "Worldwide FM",
-        streamUrl: "http://worldwidefm.out.airtime.pro:8000/worldwidefm_a",
+        streamUrl: "https://worldwidefm.out.airtime.pro/worldwidefm_a",
         websiteUrl: "https://worldwidefm.net/",
         image: "/images/stations/worldwidefm.png",
         description: "Worldwide FM is an award winning platform for underground music, culture and stories from around the globe, founded by Gilles Peterson in September 2016. The station is based in East London, with branches in Berlin, Kyoto, Los Angeles, Paris, Rio, Tokyo and beyond.",
@@ -65,7 +65,7 @@ export default [
     },*/
     {
         name: "Cashmere Radio",
-        streamUrl: "http://cashmereradio.out.airtime.pro:8000/cashmereradio_a",
+        streamUrl: "https://cashmereradio.out.airtime.pro/cashmereradio_a",
         websiteUrl: "https://cashmereradio.com/",
         image: "/images/stations/cashmereradio.png",
         description: "Cashmere Radio is a not-for-profit community experimental radio station based in Lichtenberg, Berlin.",
@@ -75,7 +75,7 @@ export default [
     },
     {
         name: "Dublin Digital Radio",
-        streamUrl: "http://dublindigitalradio.out.airtime.pro:8000/dublindigitalradio_a",
+        streamUrl: "https://dublindigitalradio.out.airtime.pro/dublindigitalradio_a",
         websiteUrl: "https://listen.dublindigitalradio.com/",
         image: "/images/stations/dublindigitalradio.png",
         description: "Dublin Digital Radio is an online digital radio station dedicated to providing a quality platform for the various communities striving to create a socially and culturally progressive city in a landscape netted with political stasis and tepid bureaucracy.",
@@ -94,7 +94,7 @@ export default [
     },
     {
         name: "New New World Radio",
-        streamUrl: "http://nnw.out.airtime.pro:8000/nnw_a",
+        streamUrl: "https://nnw.out.airtime.pro/nnw_a",
         websiteUrl: "https://nnwradio.com/",
         image: "/images/stations/newnewworldradio.png",
         description: "Post-genres, post-geography, post-politics.",
@@ -104,7 +104,7 @@ export default [
     },
     {
         name: "Boxout.fm",
-        streamUrl: "http://boxoutfm.out.airtime.pro:8000/boxoutfm_a",
+        streamUrl: "https://boxoutfm.out.airtime.pro/boxoutfm_a",
         websiteUrl: "https://boxout.fm/",
         image: "/images/stations/boxoutfm.png",
         description: "Boxout.fm is a New Delhi-based online community radio station at the crucial intersection of art, culture and independent music in a pluralistic and worldly India.",
@@ -114,7 +114,7 @@ export default [
     },
     {
         name: "The Word Radio",
-        streamUrl: "http://thewordradio.out.airtime.pro:8000/thewordradio_a",
+        streamUrl: "https://thewordradio.out.airtime.pro/thewordradio_a",
         websiteUrl: "https://theword.radio/",
         image: "/images/stations/thewordradio.png",
         description: "Belgium’s leading English-speaking free media platform, championing the best in neighbourhood living, music and art.",
@@ -138,7 +138,7 @@ export default [
     },*/
     {
         name: "KMAH Radio",
-        streamUrl: "http://streamer.radio.co/sfb32271cb/listen",
+        streamUrl: "https://streamer.radio.co/sfb32271cb/listen",
         websiteUrl: "https://kmah-radio.com/",
         image: "/images/stations/kmahradio.png",
         description: "Not for profit, community radio station broadcasting house, dub, funk, jazz, hip hop, soul, techno and more from the back streets of Leeds.",
@@ -148,7 +148,7 @@ export default [
     },
     {
         name: "Foundation FM",
-        streamUrl: "http://streamer.radio.co/s0628bdd53/listen",
+        streamUrl: "https://streamer.radio.co/s0628bdd53/listen",
         websiteUrl: "https://foundation.fm/",
         image: "/images/stations/foundationfm.png",
         description: "With an uprising in the industry of communities trying to find safe spaces to play, create and grow, foundation.fm’s mission is to showcase the hottest emerging talent in the underground music scene led by a diverse group of women, LGTBQI+ person’s and talented creatives who support our values – with women at the forefront.",
@@ -158,7 +158,7 @@ export default [
     },
     {
         name: "20ft Radio",
-        streamUrl: "http://eu2.radioboss.fm:8188/20ftRadio",
+        streamUrl: "https://c18.radioboss.fm:18146/stream",
         websiteUrl: "https://www.20ftradio.net/",
         image: "/images/stations/20ftradio.png",
         description: "Kyiv-based radio station that broadcasts music from the former ribbon-weaving factory \"Strichka\". Since 2017 we recorded over 1000 mixes in different genres and moods. Spreading of music and information is carried out for informational purposes. 20ft Radio is non-commercial and free from advertising.",
@@ -168,7 +168,7 @@ export default [
     },
     {
         name: "Skylab Radio",
-        streamUrl: "http://stream.skylab-radio.com:8000/live",
+        streamUrl: "https://secure-stream.skylab-radio.com/live",
         websiteUrl: "https://skylab-radio.com/",
         image: "/images/stations/skylabradio.png",
         description: "Online radio station based in Melbourne, Australia. At the core we are motivated to giving a platform to presenters that don't already have one. Skylab celebrates the eclectic music, artistic flair and cultural inclusiveness canvassing this city and abroad.",
@@ -202,16 +202,16 @@ export default [
         image: "/images/stations/resonancefm.png",
         description: "Resonance is a groundbreaking 24/7 radio station which broadcasts on 104.4 FM to central London, DAB to Greater London, nationally on Radioplayer and live streamed to the rest of the world. Realised by a dedicated community of volunteer engineers and programme-makers, Resonance offers over 105 creative broadcast series every week featuring local and international artists, makers and experts. Resonance seeks to discover, encourage and support a diverse range of artistic voices through radio - from first-timers to seasoned broadcasters."
     },*/
-    {
+    /*{
         name: "Resonance Extra",
-        streamUrl: "http://stream.resonance.fm:8000/resonance-extra",
+        streamUrl: "https://stream.resonance.fm/resonance-extra",
         websiteUrl: "https://extra.resonance.fm/",
         image: "/images/stations/resonanceextra.png",
         description: "Launched in December 2015, Resonance Extra is a 24/7 digital broadcasting platform dedicated to global music, sound art and radio art based at Resonance, London's community radio station for the arts. Resonance Extra broadcasts online via its website, TuneIn and Radioplayer and on DAB+ Digital Radio to a footprint of around 4.1 million people in Brighton & Hove, central Bristol, Cambridge, Greater London and Norwich.",
         twitterUrl: "http://twitter.com/resonanceextra",
         instagramUrl: "http://instagram.com/resonanceextra",
         facebookUrl: "http://facebook.com/resonanceextra"
-    },
+    },*/
     /*{
         name: "BBC Radio 6",
         streamUrl: "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_6music_mf_q",
@@ -249,7 +249,7 @@ export default [
         instagramUrl: "https://www.instagram.com/noodsradio/",
         facebookUrl: "https://www.facebook.com/noodsradio/"
     },
-    {
+    /*{
         name: "Reprezent Radio",
         streamUrl: "http://radio.canstream.co.uk:8022/live.mp3",
         websiteUrl: "https://www.reprezent.org.uk/#/",
@@ -258,7 +258,7 @@ export default [
         twitterUrl: "https://twitter.com/ReprezentRadio",
         instagramUrl: "https://www.instagram.com/reprezentradio/",
         facebookUrl: "https://www.facebook.com/reprezentradio/"
-    },
+    },*/
     /*{
         name: "ISO Radio",
         streamUrl: "http://s2.radio.co/s08ee97bf4/listen",
