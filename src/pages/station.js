@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import StationStore from "../stores/station";
 import PlaybackStore from "../stores/playback";
 import AppStore from "../stores/app";
-import StationsData from "../data/stationsdata";
-import ShowFetcher from "../utils/showfetcher";
+import StationsData from "../../res/stations-data";
+import getCurrentShowInfo from "../utils/show-fetcher";
 import { IoLogoTwitter, IoLogoInstagram, IoLogoFacebook, IoMdGlobe, IoMdArrowBack } from "react-icons/io";
 import { FaStop, FaPlay } from "react-icons/fa";
 import { observer } from "mobx-react";
@@ -74,16 +74,16 @@ export default class Station extends Component {
     componentDidMount() {
         AppStore.loading = false;
         if (this.props.query.name === "NTS 1") {
-            setInterval(Promise.resolve(ShowFetcher("NTS 1", 0)).then(show => {
+            setInterval(Promise.resolve(getCurrentShowInfo("NTS 1", 0)).then(show => {
                 StationStore.shows["NTS 1"].currentShow = show.title;
                 StationStore.shows["NTS 1"].time = show.time;
             }), 1000);
-            setInterval(Promise.resolve(ShowFetcher("NTS 2", 0)).then(show => {
+            setInterval(Promise.resolve(getCurrentShowInfo("NTS 2", 0)).then(show => {
                 StationStore.shows["NTS 2"].currentShow = show.title;
                 StationStore.shows["NTS 2"].time = show.time;
             }), 1000);
         } else {
-            setInterval(Promise.resolve(ShowFetcher(this.props.query.name, 0)).then(show => {
+            setInterval(Promise.resolve(getCurrentShowInfo(this.props.query.name, 0)).then(show => {
                 StationStore.shows[this.props.query.name].currentShow = show.title;
                 StationStore.shows[this.props.query.name].time = show.time;
             }), 1000);

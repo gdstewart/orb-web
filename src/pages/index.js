@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
 import StationStore from "../stores/station";
-import PlaybackStore from "../stores/playback";
-import AppStore from "../stores/app";
-import StationsData from "../data/stationsdata";
-import ShowFetcher from "../utils/showfetcher";
+import PlaybackStore from "../stores/Playback";
+import AppStore from "../stores/App";
+import StationsData from "../../res/stations-data";
+import getCurrentShowInfo from "../utils/show-fetcher";
 import Loader from "react-loader-spinner";
 import { FaStop, FaPlay } from "react-icons/fa";
 import Link from "next/link";
@@ -40,7 +40,7 @@ class StationsList extends Component {
 
 	_refreshShows() {
 		Object.keys(StationStore.shows).forEach(station => {
-			Promise.resolve(ShowFetcher(station, 0)).then(show => {
+			Promise.resolve(getCurrentShowInfo(station, 0)).then(show => {
 				StationStore.shows[station].currentShow = show.title;
 				StationStore.shows[station].time = show.time;
 				StationStore.shows[station].loading = false;

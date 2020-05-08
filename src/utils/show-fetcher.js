@@ -1,6 +1,6 @@
 import Moment from "moment-timezone";
 
-export default async function getCurrentShowTitle(station, num) {
+export default async function getCurrentShowInfo(station, num) {
     var title = null, startTimestamp = null, endTimestamp = null, stationTimezone = null, startTimeLocal = null, endTimeLocal = null;
     const localTimezone = Moment.tz.guess();
     try {
@@ -273,7 +273,7 @@ export default async function getCurrentShowTitle(station, num) {
             return { title: "Offline", time: startTimeLocal != null && endTimeLocal != null ? startTimeLocal + "-" + endTimeLocal : "" };
         else {
             num++;
-            return getCurrentShowTitle(station, num);
+            return getCurrentShowInfo(station, num);
         }
     }
 }

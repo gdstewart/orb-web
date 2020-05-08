@@ -1,7 +1,7 @@
-import Navbar from "../components/navbar";
-import Player from "../components/player";
-import LoadingOverlay from "../components/loadingoverlay";
-import PopUp from "../components/popup";
+import Navbar from "./Navbar";
+import Player from "./Player";
+import LoadingOverlay from "./LoadingOverlay";
+import PopUp from "./PopUp";
 import PlaybackStore from "../stores/playback";
 import AppStore from "../stores/app";
 import { observer } from "mobx-react";
