@@ -12,21 +12,21 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"cors-anywhere": "^0.4.1",
+		"cors-anywhere": "^0.4.3",
 		"fontfaceobserver": "^2.1.0",
-		"immutability-helper": "^3.0.1",
+		"immutability-helper": "^3.0.2",
 		"isomorphic-unfetch": "^3.0.0",
-		"mobx": "^5.15.3",
-		"mobx-react": "^6.1.4",
-		"moment-timezone": "^0.5.27",
-		"next": "^9.2.0",
-		"next-fonts": "^1.0.3",
-		"react": "^16.12.0",
-		"react-dom": "^16.12.0",
-		"react-icons": "^3.9.0",
-		"react-loader-spinner": "^3.1.5",
+		"mobx": "^5.15.4",
+		"mobx-react": "^6.2.2",
+		"moment-timezone": "^0.5.28",
+		"next": "^9.3.6",
+		"next-fonts": "^1.1.0",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react-icons": "^3.10.0",
+		"react-loader-spinner": "^3.1.14",
 		"react-markdown": "^4.3.1",
-		"react-player": "^1.15.2"
+		"react-player": "^1.15.3"
 	},
 	"devDependencies": {
 		"@babel/plugin-proposal-decorators": "^7.8.3"
