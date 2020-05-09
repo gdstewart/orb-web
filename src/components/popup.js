@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import StationStore from "../stores/Station";
-import PlaybackStore from "../stores/Playback";
-import AppStore from "../stores/App";
+import StationStore from "../stores/station";
+import PlaybackStore from "../stores/playback";
+import AppStore from "../stores/app";
 
 export default class PopUp extends Component {
     constructor(props) {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AppStore from "../stores/App";
+import AppStore from "../stores/app";
 import Link from "next/link";
 import Moment from "moment-timezone";
 
