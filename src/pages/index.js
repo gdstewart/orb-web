@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
-import StationStore from "../stores/station";
+import StationStore from "../stores/Station";
 import PlaybackStore from "../stores/Playback";
 import AppStore from "../stores/App";
 import StationsData from "../../res/stations-data";

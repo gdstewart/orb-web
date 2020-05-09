@@ -2,8 +2,8 @@ import Navbar from "./Navbar";
 import Player from "./Player";
 import LoadingOverlay from "./LoadingOverlay";
 import PopUp from "./PopUp";
-import PlaybackStore from "../stores/playback";
-import AppStore from "../stores/app";
+import PlaybackStore from "../stores/Playback";
+import AppStore from "../stores/App";
 import { observer } from "mobx-react";
 
 const Layout = observer(props => (

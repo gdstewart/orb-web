@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import ReactPlayer from "react-player";
 import { observer } from "mobx-react";
-import PlaybackStore from "../stores/playback";
-import StationStore from "../stores/station";
-import AppStore from "../stores/app";
+import PlaybackStore from "../stores/Playback";
+import StationStore from "../stores/Station";
+import AppStore from "../stores/App";
 import { FaRegStopCircle, FaRegPlayCircle } from "react-icons/fa";
 import Link from "next/link";
 

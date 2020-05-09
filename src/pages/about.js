@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AppStore from "../stores/app";
+import AppStore from "../stores/App";
 import { IoLogoTwitter, IoLogoGithub, IoMdGlobe } from "react-icons/io";
 
 export default class About extends Component {
