@@ -74,16 +74,16 @@ export default class Station extends Component {
     componentDidMount() {
         AppStore.loading = false;
         if (this.props.query.name === "NTS 1") {
-            setInterval(Promise.resolve(getCurrentShowInfo("NTS 1", 0)).then(show => {
+            this.interval1 = setInterval(Promise.resolve(getCurrentShowInfo("NTS 1", 0)).then(show => {
                 StationStore.shows["NTS 1"].currentShow = show.title;
                 StationStore.shows["NTS 1"].time = show.time;
             }), 1000);
-            setInterval(Promise.resolve(getCurrentShowInfo("NTS 2", 0)).then(show => {
+            this.interval2 = setInterval(Promise.resolve(getCurrentShowInfo("NTS 2", 0)).then(show => {
                 StationStore.shows["NTS 2"].currentShow = show.title;
                 StationStore.shows["NTS 2"].time = show.time;
             }), 1000);
         } else {
-            setInterval(Promise.resolve(getCurrentShowInfo(this.props.query.name, 0)).then(show => {
+            this.interval1 = setInterval(Promise.resolve(getCurrentShowInfo(this.props.query.name, 0)).then(show => {
                 StationStore.shows[this.props.query.name].currentShow = show.title;
                 StationStore.shows[this.props.query.name].time = show.time;
             }), 1000);
@@ -91,7 +91,8 @@ export default class Station extends Component {
     }
 
     componentWillUnmount() {
-
+        clearInterval(this.interval1);
+        clearInterval(this.interval2);
     }
 
     render() {
@@ -129,8 +130,8 @@ export default class Station extends Component {
                             NTS
                         </div>
                         <div className="station-info-show-title">
-                            Currently playing on NTS 1: {StationStore.shows["NTS 1"].currentShow}<br />
-                            Currently playing on NTS 2: {StationStore.shows["NTS 2"].currentShow}
+                            <b>Currently playing on NTS 1: </b>{StationStore.shows["NTS 1"].currentShow}<br />
+                            <b>Currently playing on NTS 2: </b>{StationStore.shows["NTS 2"].currentShow}
                         </div>
                         <div className="station-info-description">
                             {this.state.station[0].description}
@@ -184,7 +185,7 @@ export default class Station extends Component {
                             {this.props.query.name}
                         </div>
                         <div className="station-info-show-title">
-                            Currently playing: {StationStore.shows[this.props.query.name].currentShow}
+                            <b>Currently playing: </b>{StationStore.shows[this.props.query.name].currentShow}
                         </div>
                         <div className="station-info-description">
                             {this.state.station[0].description}

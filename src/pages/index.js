@@ -34,7 +34,8 @@ class StationsList extends Component {
 		StationStore.shows = temp;
 
 		this.state = {
-			logoHoverState: " hover-fade-opacity-hidden"
+			logoHoverState: " hover-fade-opacity-hidden",
+			clickFadeState: " fade-in"
 		};
 	}
 
@@ -86,6 +87,9 @@ class StationsList extends Component {
 											logoHoverState: ""
 										})
 									} else {
+										this.setState({
+											clickFadeState: ""
+										})
 										AppStore.showPopUp = true;
 									}
 								}
@@ -94,17 +98,79 @@ class StationsList extends Component {
 							<img className="stations-list-item-logo-image" src={station.image} alt={"NTS"} />
 						</div>
 						{!StationStore.shows[station.name].loading ?
-							<Link as={"/"} href={{ pathname: "/station", query: { name: station.name } }}>
-								<div className="stations-list-item-body hover-fade-alpha" onClick={() => {
-									AppStore.loading = true;
-								}}>
-									<div className="stations-list-item-show-title fade-in">{"1: " + StationStore.shows["NTS 1"].currentShow}</div>
-									<div className="stations-list-item-time fade-in">{StationStore.shows["NTS 1"].time}</div>
-									<div className="stations-list-item-show-title fade-in">{"2: " + StationStore.shows["NTS 2"].currentShow}</div>
-									<div className="stations-list-item-time fade-in">{StationStore.shows["NTS 2"].time}</div>
-									<div className="stations-list-item-station-name">{"NTS"}</div>
-								</div>
-							</Link> :
+							<div className="stations-list-item-body">
+								{(PlaybackStore.playbackInfo.station === "NTS 1") && PlaybackStore.playing
+									?
+									<div className="column">
+										<Link as={"/"} href={{ pathname: "/station", query: { name: station.name } }}>
+											<div className="hover-fade-alpha" onClick={() => {
+												AppStore.loading = true;
+											}}>
+												<div className={"stations-list-item-show-title" + this.state.clickFadeState}>{"1: " + StationStore.shows["NTS 1"].currentShow}</div>
+												<div className={"stations-list-item-time" + this.state.clickFadeState}>{StationStore.shows["NTS 1"].time}</div>
+											</div>
+										</Link>
+										<div className="hover-fade-alpha" onClick={() => {
+											this.setState({
+												clickFadeState: ""
+											})
+											PlaybackStore.playing = false;
+											setTimeout(() => {
+												PlaybackStore.playbackInfo = {
+													station: "NTS 2",
+													currentShow: StationStore.shows["NTS 2"].currentShow,
+													image: StationStore.stations.filter((station) => station.name === "NTS 2")[0].image,
+													streamUrl: StationStore.stations.filter((station) => station.name === "NTS 2")[0].streamUrl
+												};
+												if (!PlaybackStore.playerLoaded)
+													PlaybackStore.playerLoaded = true;
+												PlaybackStore.playing = true;
+											}, 100);
+										}}>
+											<div className={"stations-list-item-show-title" + this.state.clickFadeState}>{"2: " + StationStore.shows["NTS 2"].currentShow}</div>
+											<div className={"stations-list-item-time" + this.state.clickFadeState}>{StationStore.shows["NTS 2"].time}</div>
+										</div>
+									</div>
+									:
+									<div className="column">
+										<div className="hover-fade-alpha" onClick={() => {
+											this.setState({
+												clickFadeState: ""
+											})
+											PlaybackStore.playing = false;
+											setTimeout(() => {
+												PlaybackStore.playbackInfo = {
+													station: "NTS 1",
+													currentShow: StationStore.shows["NTS 1"].currentShow,
+													image: StationStore.stations.filter((station) => station.name === "NTS 1")[0].image,
+													streamUrl: StationStore.stations.filter((station) => station.name === "NTS 1")[0].streamUrl
+												};
+												if (!PlaybackStore.playerLoaded)
+													PlaybackStore.playerLoaded = true;
+												PlaybackStore.playing = true;
+											}, 100);
+										}}>
+											<div className={"stations-list-item-show-title" + this.state.clickFadeState}>{"1: " + StationStore.shows["NTS 1"].currentShow}</div>
+											<div className={"stations-list-item-time" + this.state.clickFadeState}>{StationStore.shows["NTS 1"].time}</div>
+										</div>
+										<Link as={"/"} href={{ pathname: "/station", query: { name: station.name } }}>
+											<div className="hover-fade-alpha" onClick={() => {
+												AppStore.loading = true;
+											}}>
+												<div className={"stations-list-item-show-title" + this.state.clickFadeState}>{"2: " + StationStore.shows["NTS 2"].currentShow}</div>
+												<div className={"stations-list-item-time" + this.state.clickFadeState}>{StationStore.shows["NTS 2"].time}</div>
+											</div>
+										</Link>
+									</div>
+								}
+								<Link as={"/"} href={{ pathname: "/station", query: { name: station.name } }}>
+									<div className="hover-fade-alpha stations-list-item-station-name" onClick={() => {
+										AppStore.loading = true;
+									}}>
+										{"NTS"}
+									</div>
+								</Link>
+							</div> :
 							<div className="stations-list-item-body">
 								<Loader className="stations-list-item-show-title fade-in" type="ThreeDots" color="#FFF" height={20} width={20} />
 								<div className="stations-list-item-time">&nbsp;</div>
@@ -146,21 +212,56 @@ class StationsList extends Component {
 											PlaybackStore.playing = true;
 										}, 100);
 									}
+									this.setState({
+										clickFadeState: ""
+									})
 								}
 							}}>
 							{!StationStore.shows[station.name].loading && StationStore.shows[station.name].currentShow !== "Offline" ? (PlaybackStore.playbackInfo.station === station.name && PlaybackStore.playing ? <FaStop className="stations-list-item-logo-stop-icon" /> : <FaPlay className={"stations-list-item-logo-play-icon" + this.state.logoHoverState} />) : null}
 							<img className="stations-list-item-logo-image" src={station.image} alt={station.name} />
 						</div>
 						{!StationStore.shows[station.name].loading ?
-							<Link as={"/"} href={{ pathname: "/station", query: { name: station.name } }}>
-								<div className="stations-list-item-body hover-fade-alpha" onClick={() => {
-									AppStore.loading = true;
-								}}>
-									<div className="stations-list-item-show-title fade-in">{StationStore.shows[station.name].currentShow}</div>
-									<div className="stations-list-item-time fade-in">{StationStore.shows[station.name].time}</div>
-									<div className="stations-list-item-station-name">{station.name}</div>
-								</div>
-							</Link> :
+							<div className="stations-list-item-body">
+								{PlaybackStore.playbackInfo.station === station.name && PlaybackStore.playing
+									?
+									<Link as={"/"} href={{ pathname: "/station", query: { name: station.name } }}>
+										<div className="hover-fade-alpha" onClick={() => {
+											AppStore.loading = true;
+										}}>
+											<div className={"stations-list-item-show-title" + this.state.clickFadeState}>{StationStore.shows[station.name].currentShow}</div>
+											<div className={"stations-list-item-time" + this.state.clickFadeState}>{StationStore.shows[station.name].time}</div>
+										</div>
+									</Link>
+									:
+									<div className="hover-fade-alpha" onClick={() => {
+										this.setState({
+											clickFadeState: ""
+										})
+										PlaybackStore.playing = false;
+										setTimeout(() => {
+											PlaybackStore.playbackInfo = {
+												station: station.name,
+												currentShow: StationStore.shows[station.name].currentShow,
+												image: station.image,
+												streamUrl: station.streamUrl
+											};
+											if (!PlaybackStore.playerLoaded)
+												PlaybackStore.playerLoaded = true;
+											PlaybackStore.playing = true;
+										}, 100);
+									}}>
+										<div className={"stations-list-item-show-title" + this.state.clickFadeState}>{StationStore.shows[station.name].currentShow}</div>
+										<div className={"stations-list-item-time" + this.state.clickFadeState}>{StationStore.shows[station.name].time}</div>
+									</div>
+								}
+								<Link as={"/"} href={{ pathname: "/station", query: { name: station.name } }}>
+									<div className="hover-fade-alpha stations-list-item-station-name" onClick={() => {
+										AppStore.loading = true;
+									}}>
+										{station.name}
+									</div>
+								</Link>
+							</div> :
 							<div className="stations-list-item-body">
 								<Loader className="stations-list-item-show-title fade-in" type="ThreeDots" color="#FFF" height={20} width={20} />
 								<div className="stations-list-item-station-name">{station.name}</div>

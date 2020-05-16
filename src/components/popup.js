@@ -21,20 +21,18 @@ export default class PopUp extends Component {
                     <div className="pop-up-option hover-fade-alpha"
                         onClick={() => {
                             if (StationStore.shows["NTS 1"].currentShow !== "Offline") {
-                                if (PlaybackStore.playbackInfo.station !== this.state.option1.name) {
-                                    PlaybackStore.playing = false;
-                                    setTimeout(() => {
-                                        PlaybackStore.playbackInfo = {
-                                            station: this.state.option1.name,
-                                            currentShow: StationStore.shows["NTS 1"].currentShow,
-                                            image: this.state.option1.image,
-                                            streamUrl: this.state.option1.streamUrl
-                                        };
-                                        if (!PlaybackStore.playerLoaded)
-                                            PlaybackStore.playerLoaded = true;
-                                        PlaybackStore.playing = true;
-                                    }, 100);
-                                }
+                                PlaybackStore.playing = false;
+                                setTimeout(() => {
+                                    PlaybackStore.playbackInfo = {
+                                        station: this.state.option1.name,
+                                        currentShow: StationStore.shows["NTS 1"].currentShow,
+                                        image: this.state.option1.image,
+                                        streamUrl: this.state.option1.streamUrl
+                                    };
+                                    if (!PlaybackStore.playerLoaded)
+                                        PlaybackStore.playerLoaded = true;
+                                    PlaybackStore.playing = true;
+                                }, 100);
                             }
                             AppStore.showPopUp = false;
                         }}>
@@ -43,20 +41,18 @@ export default class PopUp extends Component {
                     <div className="pop-up-option hover-fade-alpha"
                         onClick={() => {
                             if (StationStore.shows["NTS 2"].currentShow !== "Offline") {
-                                if (PlaybackStore.playbackInfo.station !== this.state.option2.name) {
-                                    PlaybackStore.playing = false;
-                                    setTimeout(() => {
-                                        PlaybackStore.playbackInfo = {
-                                            station: this.state.option2.name,
-                                            currentShow: StationStore.shows["NTS 2"].currentShow,
-                                            image: this.state.option2.image,
-                                            streamUrl: this.state.option2.streamUrl
-                                        };
-                                        if (!PlaybackStore.playerLoaded)
-                                            PlaybackStore.playerLoaded = true;
-                                        PlaybackStore.playing = true;
-                                    }, 100);
-                                }
+                                PlaybackStore.playing = false;
+                                setTimeout(() => {
+                                    PlaybackStore.playbackInfo = {
+                                        station: this.state.option2.name,
+                                        currentShow: StationStore.shows["NTS 2"].currentShow,
+                                        image: this.state.option2.image,
+                                        streamUrl: this.state.option2.streamUrl
+                                    };
+                                    if (!PlaybackStore.playerLoaded)
+                                        PlaybackStore.playerLoaded = true;
+                                    PlaybackStore.playing = true;
+                                }, 100);
                             }
                             AppStore.showPopUp = false;
                         }}>

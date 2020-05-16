@@ -1,6 +1,6 @@
 {
 	"name": "orb-web",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
@@ -26,7 +26,8 @@
 		"react-icons": "^3.10.0",
 		"react-loader-spinner": "^3.1.14",
 		"react-markdown": "^4.3.1",
-		"react-player": "^1.15.3"
+		"react-player": "^1.15.3",
+		"react-spinkit": "^3.0.0"
 	},
 	"devDependencies": {
 		"@babel/plugin-proposal-decorators": "^7.8.3"

@@ -166,7 +166,7 @@ export default [
         instagramUrl: "https://www.instagram.com/20ftradio/",
         facebookUrl: "https://www.facebook.com/20ftradio/"
     },
-    {
+    /*{
         name: "Skylab Radio",
         streamUrl: "https://secure-stream.skylab-radio.com/live",
         websiteUrl: "https://skylab-radio.com/",
@@ -174,7 +174,7 @@ export default [
         description: "Online radio station based in Melbourne, Australia. At the core we are motivated to giving a platform to presenters that don't already have one. Skylab celebrates the eclectic music, artistic flair and cultural inclusiveness canvassing this city and abroad.",
         instagramUrl: "https://www.instagram.com/skylab_radio/",
         facebookUrl: "https://www.facebook.com/skylabradiomelb/"
-    },
+    },*/
     /*{
         name: "1020 Radio",
         streamUrl: "http://91.121.134.23:8000/;stream.mp3",

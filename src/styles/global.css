@@ -112,7 +112,7 @@ body {
 
 .nav-item, .station-info-social-bar-item {
     display: inline;
-    font-weight: 400;
+    font-weight: bold;
     padding: 0.5rem;
 }
 
@@ -121,6 +121,7 @@ body {
     margin-right: 0.25rem;
     display: flex;
     flex-direction: row;
+    font-weight: normal;
 }
 
 .nav-link, .nav-date, .station-info-social-bar-item-text, .about-info-link-text {
@@ -237,6 +238,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .stations-list-item-station-name {
@@ -301,6 +303,7 @@ body {
 .station-info-name {
     margin-top: 1rem;
     font-size: 2rem;
+    font-weight: bold;
 }
 
 .station-info-show-title {
@@ -382,6 +385,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .player-station-body-station-name {
@@ -405,6 +409,7 @@ body {
 .about-info-header {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    font-weight: bold;
 }
 
 .about-info-blurb {
