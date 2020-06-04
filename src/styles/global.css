@@ -13,7 +13,7 @@
 }
 
 :root {
-    background-color: #000;
+    background-color: var(--theme-color);
     font-family: "Authentic Sans", sans-serif;
 }
 
@@ -27,7 +27,7 @@ body {
 }
 
 .black-border {
-    border: 2px solid #000;
+    border: 2px solid var(--theme-color);
 }
 
 .fade-in {
@@ -100,7 +100,7 @@ body {
     z-index: 2;
     width: 100%;
     border-bottom: 2px solid #FFF;
-    background-color: #000;
+    background-color: var(--theme-color);
 }
 
 .nav-items, .station-info-social-bar {
@@ -112,7 +112,6 @@ body {
 
 .nav-item, .station-info-social-bar-item {
     display: inline;
-    font-weight: bold;
     padding: 0.5rem;
 }
 
@@ -124,7 +123,7 @@ body {
     font-weight: normal;
 }
 
-.nav-link, .nav-date, .station-info-social-bar-item-text, .about-info-link-text {
+.nav-link, .nav-date, .station-info-social-bar-item-text, .about-info-link-text, .about-info-special-link-text {
 	color: #FFF;
 	background-image: none;
     text-decoration: none;
@@ -334,7 +333,7 @@ body {
     bottom: 0;
     width: 100%;
     border-top: 2px solid #FFF;
-    background-color: #000;
+    background-color: var(--theme-color);
 }
 
 .player-items {
@@ -408,8 +407,12 @@ body {
 
 .about-info-header {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
     font-weight: bold;
+}
+
+.about-info-special {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 .about-info-blurb {
@@ -437,6 +440,10 @@ body {
 
 .about-info-link-text {
     font-size: 1.1rem;
+}
+
+.about-info-special-link-text {
+    font-size: 1.2rem;
 }
 
 .about-info-image {

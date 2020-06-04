@@ -8,7 +8,12 @@ export default function MyApp({ Component, pageProps }) {
 		<Layout>
 			<Head>
 				<meta charSet="utf-8" />
-				<title>orb</title>
+				<title>orb: online radio broadcaster</title>
+				<meta property="og:title" content="orb: online radio broadcaster" />
+				<meta property="og:description" content="A handy tool that aggregates various online, non-terrestrial radio stations on a single site." />
+				<meta property="og:type" content="website" />
+				<meta property="og:url" content="https://orb-web.now.sh" />
+				<meta property="og:image" content="/images/orb/logoblackog.png" />
 				<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 				<link rel="canonical" href="https://graemestew.art/orb" />
 			</Head>

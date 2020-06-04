@@ -53,6 +53,7 @@ class StationsList extends Component {
 
 	componentDidMount() {
 		window.scrollTo(0, 0);
+		document.documentElement.style.setProperty("--theme-color", "#000");
 		AppStore.loading = false;
 		AppStore.currentPage = "stations";
 		this._refreshShows();

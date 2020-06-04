@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AppStore from "../stores/app";
 import { IoLogoTwitter, IoLogoGithub, IoMdGlobe } from "react-icons/io";
+import { FaGooglePlay } from "react-icons/fa";
 
 export default class About extends Component {
     componentDidMount() {
@@ -14,6 +15,9 @@ export default class About extends Component {
                 <div className="about-info">
                     <div className="about-info-header">
                         orb: online radio broadcaster v1.0
+                    </div>
+                    <div className="about-info-special">
+                        <a className="about-info-special-link-text hover-fade-alpha" href={"https://play.google.com/store/apps/details?id=com.orbmobile"} target="_blank" rel="noopener noreferrer"><i>Now available on Android!</i></a>
                     </div>
                     <div className="about-info-blurb">
                         orb is a handy tool that aggregates various online, non-terrestrial radio stations on a single site.
@@ -39,6 +43,10 @@ export default class About extends Component {
                         <li key={"twitter"} className="about-info-link">
                             <IoLogoTwitter className="about-info-link-icon" />
                             <a className="about-info-link-text hover-fade-alpha" href={"https://twitter.com/graemedstewart"} target="_blank" rel="noopener noreferrer">@graemedstewart</a>
+                        </li>
+                        <li key={"googleplay"} className="about-info-link">
+                            <FaGooglePlay className="about-info-link-icon" />
+                            <a className="about-info-link-text hover-fade-alpha" href={"https://play.google.com/store/apps/details?id=com.orbmobile"} target="_blank" rel="noopener noreferrer">Android version</a>
                         </li>
                     </ul>
                     <img className="about-info-image" src="/images/misc/isono.jpg" alt="&copy; Hiroo Isono" />
