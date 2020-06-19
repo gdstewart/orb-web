@@ -480,11 +480,12 @@ body {
     }
 
     .mobile-view-logo {
+        display: none;
         align-self: center;
         background: url("/images/orb/logoblacksmall.png");
         background-size: cover;
-        width: 125px;
-        height: 125px;
+        width: 20vw;
+        height: 20vw;
     }
 
     .mobile-view-header {
