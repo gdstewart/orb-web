@@ -15,6 +15,11 @@
 :root {
     background-color: var(--theme-color);
     font-family: "Authentic Sans", sans-serif;
+    color: #FFF;
+}
+
+.mobile-view {
+    display: none;
 }
 
 body {
@@ -123,7 +128,7 @@ body {
     font-weight: normal;
 }
 
-.nav-link, .nav-date, .station-info-social-bar-item-text, .about-info-link-text, .about-info-special-link-text {
+.nav-link, .nav-date, .station-info-social-bar-item-text, .about-info-link-text, .about-info-special-link-text, .mobile-view-link-text {
 	color: #FFF;
 	background-image: none;
     text-decoration: none;
@@ -149,7 +154,6 @@ body {
 }
 
 .section {
-	color: #FFF;
 	display: flex;
     justify-content: flex-start;
     margin: 5vw;
@@ -243,24 +247,6 @@ body {
 .stations-list-item-station-name {
     margin-top: auto;
     font-size: 1.2rem;
-}
-
-@media only screen and (min-width: 960px) {
-    .stations-list-item {
-		max-width: calc(50% - 1.25rem);
-    }
-}
-
-@media only screen and (min-height: 540px) {
-    .stations-list-item-show-title {
-        -webkit-line-clamp: 3;
-    }
-}
-
-@media only screen and (max-width: 540px) {
-    .nav-date {
-        display: none;
-    }
 }
 
 .station-back {
@@ -457,4 +443,76 @@ body {
 .spacer-bottom {
     width: 100%;
     height: calc(80px + 2.25rem);
+}
+
+@media only screen and (min-width: 960px) {
+    .stations-list-item {
+		max-width: calc(50% - 1.25rem);
+    }
+}
+
+@media only screen and (min-height: 540px) {
+    .stations-list-item-show-title {
+        -webkit-line-clamp: 3;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    * {
+        overflow-y: hidden;
+    }
+
+    .mobile-view {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 3;
+        background-color: #000;
+        padding: 3rem;
+    }
+
+    .mobile-view-logo {
+        align-self: center;
+        background: url("/images/orb/logoblacksmall.png");
+        background-size: cover;
+        width: 200px;
+        height: 200px;
+    }
+
+    .mobile-view-header {
+        align-self: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    .mobile-view-blurb {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .mobile-view-links {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 0.5rem;
+        padding-left: 0;
+    }
+
+    .mobile-view-link {
+        display: flex;
+        padding-bottom: 0.5rem;
+    }
+
+    .mobile-view-link-icon {
+        font-size: 1.5rem;
+        padding-right: 0.6rem;
+    }
+
+    .mobile-view-link-text {
+        font-size: 1.1rem;
+    }
 }
