@@ -463,7 +463,7 @@ body {
     }
 
     body {
-        position: relative;
+        position: fixed;
     }
 
     .mobile-view {
@@ -483,8 +483,8 @@ body {
         align-self: center;
         background: url("/images/orb/logoblacksmall.png");
         background-size: cover;
-        width: 150px;
-        height: 150px;
+        width: 125px;
+        height: 125px;
     }
 
     .mobile-view-header {
