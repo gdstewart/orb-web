@@ -457,20 +457,7 @@ body {
     }
 }
 
-@media screen and (orientation: landscape) {
-    html {
-        transform: rotate(-90deg);
-        transform-origin: left top;
-        width: 100vh;
-        height: 100vw;
-        overflow-x: hidden;
-        position: absolute;
-        top: 100%;
-        left: 0;
-    }
-}
-
-@media only screen and (max-width: 540px) {
+@media only screen and (max-width: 750px) {
     html, body {
         overflow-y: hidden;
     }
