@@ -458,8 +458,12 @@ body {
 }
 
 @media only screen and (max-width: 540px) {
-    * {
+    html, body {
         overflow-y: hidden;
+    }
+
+    body {
+        position: relative;
     }
 
     .mobile-view {
@@ -479,8 +483,8 @@ body {
         align-self: center;
         background: url("/images/orb/logoblacksmall.png");
         background-size: cover;
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
     }
 
     .mobile-view-header {

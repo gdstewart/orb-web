@@ -4,7 +4,7 @@ import { FaGooglePlay } from "react-icons/fa";
 export default class MobileView extends Component {
     render() {
         return (
-            <div className="mobile-view fade-in">
+            <div className="mobile-view">
                 <div className="mobile-view-logo" />
                 <div className="mobile-view-header">Sorry!</div>
                 <div className="mobile-view-blurb">orb is only available on desktop, tablets, and the Google Play store.</div>
