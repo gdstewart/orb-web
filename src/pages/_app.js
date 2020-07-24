@@ -15,7 +15,7 @@ export default function MyApp({ Component, pageProps }) {
 				<meta property="og:url" content="https://orb-web.now.sh" />
 				<meta property="og:image" content="/images/orb/logoblackog.png" />
 				<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-				<link rel="canonical" href="https://graemestew.art/orb" />
+				<link rel="canonical" href="https://orb-web.now.sh" />
 			</Head>
 			<Component {...pageProps} />
 		</Layout>

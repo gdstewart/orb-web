@@ -90,8 +90,8 @@ body {
 }
 
 .pop-up {
-    background-color: black;
-    color: white;
+    background-color: #000;
+    color: #FFF;
     padding: 1.25rem;
 }
 
@@ -211,7 +211,7 @@ body {
     padding: calc(5vh + 2px);
     height: 10vh;
     width: 10vh;
-    color: white;
+    color: #FFF;
 }
 
 .stations-list-item-logo-stop-icon {
@@ -273,7 +273,7 @@ body {
     padding: calc(10vh + 2px);
     height: 20vh;
     width: 20vh;
-    color: white;
+    color: #FFF;
 }
 
 .station-info-logo-stop-icon {
