@@ -60,7 +60,6 @@ class StationsList extends Component {
 		this.interval = setInterval(() => {
 			this._refreshShows();
 		}, 60000);
-
 	}
 
 	componentWillUnmount() {
@@ -68,7 +67,7 @@ class StationsList extends Component {
 	}
 
 	render() {
-		var list = StationStore.stations.map((station) => {
+		let list = StationStore.stations.map((station) => {
 			if (station.name === "NTS 1") {
 				return (
 					<li key={station.name} className={StationStore.shows[station.name].currentShow !== "Offline" ? "stations-list-item white-border" : "stations-list-item white-border disabled"}>

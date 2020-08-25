@@ -25,6 +25,7 @@
 body {
     margin: 0;
     overflow-y: scroll;
+    scrollbar-color: var(--theme-color);
 }
 
 .white-border {
@@ -33,6 +34,10 @@ body {
 
 .black-border {
     border: 2px solid var(--theme-color);
+}
+
+.light-background {
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
 .fade-in {
@@ -90,7 +95,7 @@ body {
 }
 
 .pop-up {
-    background-color: #000;
+    background-color: var(--theme-color);
     color: #FFF;
     padding: 1.25rem;
 }
@@ -128,7 +133,7 @@ body {
     font-weight: normal;
 }
 
-.nav-link, .nav-date, .station-info-social-bar-item-text, .about-info-link-text, .about-info-special-link-text, .mobile-view-link-text {
+.nav-link, .nav-date, .station-info-social-bar-item-text, .about-info-link-text, .about-info-special-link-text, .mobile-view-link-text, .schedule-list-item-link-text {
 	color: #FFF;
 	background-image: none;
     text-decoration: none;
@@ -184,7 +189,7 @@ body {
     padding: 0;
 }
 
-.stations-list-item {
+.stations-list-item, .schedule-list-item {
     position: relative;
     flex: 0 100%;
     display: flex;
@@ -387,7 +392,7 @@ body {
     opacity: 0.4;
 }
 
-.about-info {
+.about-info, .schedule-view {
     padding: 0 10vw 0 10vw;
 }
 
@@ -445,6 +450,85 @@ body {
     height: calc(80px + 2.25rem);
 }
 
+.schedule-view {
+    display: flex;
+}
+
+.schedule-sidebar {
+    position: fixed;
+}
+
+.schedule-dropdown {
+    font-size: 1.1rem;
+    width: 20vw;
+    margin-bottom: 1rem;
+}
+
+.schedule-dropdown__value-container, .schedule-dropdown__menu-list, .schedule-dropdown__indicators, .schedule-dropdown__control {
+    border-radius: 0px !important;
+    background-color: var(--theme-color) !important;
+}
+
+.schedule-dropdown__control, .schedule-dropdown__menu-list {
+    padding: 0 !important;
+    border: 2px solid #FFF !important;
+}
+
+.schedule-dropdown__control, .schedule-dropdown__option {
+    display: inline-block;
+    line-height: 2.5rem;
+}
+
+.schedule-dropdown__indicator-separator {
+    border: 1px solid #FFF !important;
+}
+
+.schedule-dropdown__indicator, .schedule-dropdown__dropdown-indicator, .schedule-dropdown__value-container {
+    -webkit-transition: all .2s ease-out !important;
+    transition: all .2s ease-out !important;
+    color: #FFF !important;
+}
+
+.schedule-dropdown__indicator:hover, .schedule-dropdown__value-container:hover {
+    cursor: pointer !important;
+    opacity: 0.4 !important;
+}
+
+.schedule-dropdown__placeholder, .schedule-dropdown__single-value {
+    color: #FFF !important;
+    text-overflow: ellipsis !important;
+}
+
+.schedule-dropdown__menu-list {
+    background-color: white !important; 
+}
+
+.schedule-note {
+    text-align: center;
+    padding-top: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.schedule-list-container {
+    width: 100%;
+    padding-left: calc(20vw + 2rem);
+}
+
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.schedule-list-item {
+    justify-content: space-between;
+    padding: 1rem;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
 @media only screen and (min-width: 960px) {
     .stations-list-item {
 		max-width: calc(50% - 1.25rem);
@@ -475,7 +559,7 @@ body {
         bottom: 0;
         right: 0;
         z-index: 3;
-        background-color: #000;
+        background-color: var(--theme-color);
         padding: 3rem;
     }
 

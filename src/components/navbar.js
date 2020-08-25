@@ -49,14 +49,14 @@ export default class Navbar extends Component {
                             }}>Stations</a>
                         </Link>
                     </li>
-                    {/*<li className="nav-item">
+                    {<li className="nav-item">
                         <Link
                             as={"/"} href="/schedules">
                             <a className="nav-link hover-fade-alpha" onClick={() => {
                                 AppStore.loading = true;
                             }}>Schedules</a>
                         </Link>
-                        </li>*/}
+                    </li>}
                     <li className="nav-item">
                         <Link
                             as={"/"} href="/about">

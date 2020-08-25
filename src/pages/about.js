@@ -14,7 +14,7 @@ export default class About extends Component {
             <div className="section column fade-in">
                 <div className="about-info">
                     <div className="about-info-header">
-                        orb: online radio broadcaster v1.0
+                        orb: online radio broadcaster v1.1
                     </div>
                     <div className="about-info-special">
                         <a className="about-info-special-link-text hover-fade-alpha" href={"https://play.google.com/store/apps/details?id=com.orbmobile"} target="_blank" rel="noopener noreferrer"><i>Now available on Android!</i></a>

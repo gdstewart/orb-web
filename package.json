@@ -1,6 +1,6 @@
 {
 	"name": "orb-web",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
@@ -12,24 +12,24 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"cors-anywhere": "^0.4.3",
 		"fontfaceobserver": "^2.1.0",
-		"immutability-helper": "^3.0.2",
+		"immutability-helper": "^3.1.1",
 		"isomorphic-unfetch": "^3.0.0",
-		"mobx": "^5.15.4",
-		"mobx-react": "^6.2.2",
-		"moment-timezone": "^0.5.28",
-		"next": "^9.3.6",
-		"next-fonts": "^1.1.0",
+		"mobx": "^5.15.6",
+		"mobx-react": "^6.2.5",
+		"moment-timezone": "^0.5.31",
+		"next": "^9.5.2",
+		"next-fonts": "^1.4.0",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
-		"react-icons": "^3.10.0",
+		"react-icons": "^3.11.0",
 		"react-loader-spinner": "^3.1.14",
 		"react-markdown": "^4.3.1",
 		"react-player": "^1.15.3",
+		"react-select": "^3.1.0",
 		"react-spinkit": "^3.0.0"
 	},
 	"devDependencies": {
-		"@babel/plugin-proposal-decorators": "^7.8.3"
+		"@babel/plugin-proposal-decorators": "^7.10.5"
 	}
 }
