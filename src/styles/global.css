@@ -141,7 +141,7 @@ body {
 }
 
 .nav-link-logo, .nav-link-logo:hover {
-    background: url("/images/orb/logoblackxxsmall.png");
+    background: url("/images/orb/logowhitexxsmall.png");
     background-size: cover;
     width: 40px;
     height: 40px;
@@ -484,8 +484,8 @@ body {
 }
 
 .schedule-dropdown__indicator, .schedule-dropdown__dropdown-indicator, .schedule-dropdown__value-container {
-    -webkit-transition: all .2s ease-out !important;
-    transition: all .2s ease-out !important;
+    -webkit-transition: opacity .2s ease-out !important;
+    transition: opacity .2s ease-out !important;
     color: #FFF !important;
 }
 
@@ -529,6 +529,20 @@ body {
     font-size: 1.1rem;
 }
 
+.theme-cycler {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 0.5rem;
+    background-color: var(--theme-color);
+    border-bottom: none;
+    border-right: none;
+}
+
+.theme-cycler-icon {
+    font-size: 2rem;
+}
+
 @media only screen and (min-width: 960px) {
     .stations-list-item {
 		max-width: calc(50% - 1.25rem);
@@ -566,7 +580,7 @@ body {
     .mobile-view-logo {
         display: none;
         align-self: center;
-        background: url("/images/orb/logoblacksmall.png");
+        background: url("/images/orb/logowhitesmall.png");
         background-size: cover;
         width: 20vw;
         height: 20vw;

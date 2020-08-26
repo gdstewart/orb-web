@@ -16,7 +16,7 @@ export default class PopUp extends Component {
         return (
             <div className="overlay fade-in-fast" onClick={() => {
                 AppStore.showPopUp = false;
-            }}>>
+            }}>
                 <div className="pop-up white-border">
                     <div className="pop-up-option hover-fade-alpha"
                         onClick={() => {

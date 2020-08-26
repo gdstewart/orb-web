@@ -10,8 +10,8 @@ import getCurrentSchedule from "../utils/schedule-fetcher";
 const dropdownStyles = {
     option: (provided, state) => ({
         ...provided,
-        color: state.isSelected || state.isFocused ? "black" : "white",
-        backgroundColor: state.isSelected || state.isFocused ? "white" : "black",
+        color: state.isSelected || state.isFocused ? AppStore.selectedThemeColor : "#FFF",
+        backgroundColor: state.isSelected || state.isFocused ? "#FFF" : AppStore.selectedThemeColor,
         cursor: state.isFocused ? "pointer" : "default",
     })
 }
@@ -48,11 +48,9 @@ class ScheduleSelector extends Component {
         window.scrollTo(0, 0);
         AppStore.loading = false;
         AppStore.currentPage = "schedules";
-
         this._setDay(this.state.dayOptions[0]);
         if (ScheduleStore.currentStation)
             this._setStation(this.state.stationOptions[ScheduleStore.currentStation]);
-
         /*this._refreshShows();
         this.interval = setInterval(() => {
             this._refreshShows();
@@ -65,12 +63,10 @@ class ScheduleSelector extends Component {
         ScheduleStore.currentStation = station.value;
         let schedule = await getCurrentSchedule(station.label);
         ScheduleStore.currentSchedule = schedule;
-        console.log(schedule);
         setTimeout(() => AppStore.loading = false, 100);
     }
 
     _setDay = (day) => {
-        console.log(day)
         AppStore.loading = true;
         ScheduleStore.currentDay = day.value;
         setTimeout(() => AppStore.loading = false, 100);

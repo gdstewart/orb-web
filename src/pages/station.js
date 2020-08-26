@@ -74,19 +74,25 @@ export default class Station extends Component {
     componentDidMount() {
         AppStore.loading = false;
         if (this.props.query.name === "NTS 1") {
-            this.interval1 = setInterval(Promise.resolve(getCurrentShowInfo("NTS 1", 0)).then(show => {
-                StationStore.shows["NTS 1"].currentShow = show.title;
-                StationStore.shows["NTS 1"].time = show.time;
-            }), 1000);
-            this.interval2 = setInterval(Promise.resolve(getCurrentShowInfo("NTS 2", 0)).then(show => {
-                StationStore.shows["NTS 2"].currentShow = show.title;
-                StationStore.shows["NTS 2"].time = show.time;
-            }), 1000);
+            this.interval1 = setInterval(function () {
+                Promise.resolve(getCurrentShowInfo("NTS 1", 0)).then(show => {
+                    StationStore.shows["NTS 1"].currentShow = show.title;
+                    StationStore.shows["NTS 1"].time = show.time;
+                })
+            }, 1000);
+            this.interval2 = setInterval(function () {
+                Promise.resolve(getCurrentShowInfo("NTS 2", 0)).then(show => {
+                    StationStore.shows["NTS 2"].currentShow = show.title;
+                    StationStore.shows["NTS 2"].time = show.time;
+                })
+            }, 1000);
         } else {
-            this.interval1 = setInterval(Promise.resolve(getCurrentShowInfo(this.props.query.name, 0)).then(show => {
-                StationStore.shows[this.props.query.name].currentShow = show.title;
-                StationStore.shows[this.props.query.name].time = show.time;
-            }), 1000);
+            this.interval1 = setInterval(function () {
+                Promise.resolve(getCurrentShowInfo(this.props.query.name, 0)).then(show => {
+                    StationStore.shows[this.props.query.name].currentShow = show.title;
+                    StationStore.shows[this.props.query.name].time = show.time;
+                })
+            }.bind(this), 1000)
         }
     }
 

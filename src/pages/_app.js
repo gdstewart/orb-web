@@ -13,7 +13,7 @@ export default function MyApp({ Component, pageProps }) {
 				<meta property="og:description" content="A handy tool that aggregates various online, non-terrestrial radio stations on a single site." />
 				<meta property="og:type" content="website" />
 				<meta property="og:url" content="https://orb-web.now.sh" />
-				<meta property="og:image" content="/images/orb/logoblackog.png" />
+				<meta property="og:image" content="/images/orb/logowhiteog.png" />
 				<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 				<link rel="canonical" href="https://orb-web.now.sh" />
 			</Head>

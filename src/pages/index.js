@@ -53,13 +53,17 @@ class StationsList extends Component {
 
 	componentDidMount() {
 		window.scrollTo(0, 0);
-		document.documentElement.style.setProperty("--theme-color", "#000");
 		AppStore.loading = false;
 		AppStore.currentPage = "stations";
 		this._refreshShows();
 		this.interval = setInterval(() => {
 			this._refreshShows();
 		}, 60000);
+
+		if (!AppStore.selectedThemeColor) {
+			AppStore.selectedThemeColor = AppStore.themeColors[0];
+			document.documentElement.style.setProperty("--theme-color", AppStore.selectedThemeColor);
+		}
 	}
 
 	componentWillUnmount() {

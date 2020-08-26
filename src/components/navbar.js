@@ -3,6 +3,8 @@ import AppStore from "../stores/app";
 import Link from "next/link";
 import Moment from "moment-timezone";
 
+var index = 0;
+
 export default class Navbar extends Component {
     constructor(props) {
         super(props);
@@ -21,6 +23,12 @@ export default class Navbar extends Component {
         }), 1000);
     }
 
+    _changeTheme() {
+        if (++index === AppStore.themeColors.length) index = 0;
+        AppStore.selectedThemeColor = AppStore.themeColors[index];
+        document.documentElement.style.setProperty("--theme-color", AppStore.selectedThemeColor);
+    }
+
     componentWillUnmount() {
         clearInterval(this.interval);
     }
@@ -32,13 +40,7 @@ export default class Navbar extends Component {
             }}>
                 <ul className="nav-items">
                     <li className="nav-item">
-                        <Link
-                            href="/">
-                            <div className="nav-link-logo fade-in hover-fade-opacity" onClick={() => {
-                                if (AppStore.currentPage !== "stations")
-                                    AppStore.loading = true;
-                            }} />
-                        </Link>
+                        <div className="nav-link-logo fade-in hover-fade-opacity" onClick={this._changeTheme} />
                     </li>
                     <li className="nav-item">
                         <Link
@@ -53,7 +55,8 @@ export default class Navbar extends Component {
                         <Link
                             as={"/"} href="/schedules">
                             <a className="nav-link hover-fade-alpha" onClick={() => {
-                                AppStore.loading = true;
+                                if (AppStore.currentPage !== "schedules")
+                                    AppStore.loading = true;
                             }}>Schedules</a>
                         </Link>
                     </li>}
