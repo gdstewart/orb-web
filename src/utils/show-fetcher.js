@@ -139,14 +139,14 @@ export default async function getCurrentShowInfo(station, num) {
             else if (title.startsWith("Foundation FM  - "))
                 title = title.substr(17, title.length);
             startTimestamp = info.current_track.start_time;
-            if (title.startsWith("Brunch"))
+            if (title.toLowerCase().includes("brunch"))
                 endTimestamp = Moment(info.current_track.start_time).add(3, "h").format();
-            else if (title.startsWith("The Catch") || title.startsWith("Happy Hour"))
+            else if (title.toLowerCase().includes("catch") || title.toLowerCase().includes("happy hour") || title.toLowerCase().includes("the specialists"))
                 endTimestamp = Moment(info.current_track.start_time).add(2, "h").format();
-            else if (title.startsWith("The Takeover") || title.startsWith("Playlist"))
+            else if (title.toLowerCase().includes("takeover") || title.toLowerCase().includes("playlist") || title.toLowerCase().includes("hour"))
                 endTimestamp = Moment(info.current_track.start_time).add(1, "h").format();
             else
-                endTimestamp = "∞";
+                startTimestamp = "Unknown duration";
             stationTimezone = "Europe/London";
         } else if (station === "20ft Radio") {
             const searchUrl = "https://app.20ftradio.net/stream-status.php";
@@ -167,7 +167,7 @@ export default async function getCurrentShowInfo(station, num) {
             const searchUrl = "https://1020.live/player/meta/get";
             const response = await fetch(searchUrl);
             const info = await response.json();
-            startTimestamp = "Time unavailable";
+            startTimestamp = "Unknown duration";
             if (title.startsWith("1020 Archive")) endTimestamp = "∞";
         } else if (station === "Netil Radio") {
             const searchUrl = "https://studio.mixlr.com/api/stations/4/schedule.json";
@@ -175,7 +175,7 @@ export default async function getCurrentShowInfo(station, num) {
             const info = await response.json();
             title = info.on_air.show.title;
             if (title == null) title = "Archive";
-            startTimestamp = "Time unavailable";
+            startTimestamp = "Unknown duration";
             /*} else if (station === "Resonance FM") {
                 const searchUrl = "https://www.resonancefm.com/now-next.json";
                 const response = await fetch(searchUrl);
@@ -195,13 +195,13 @@ export default async function getCurrentShowInfo(station, num) {
             const response = await fetch(searchUrl);
             const info = await response.json();
             title = info.data[0].titles.primary + " - " + info.data[0].titles.secondary;
-            startTimestamp = "Time unavailable";
+            startTimestamp = "Unknown duration";
         } else if (station === "WFMU") {
             const searchUrl = "https://wfmu.org/wp-content/themes/wfmu-theme/library/php/includes/liveNow.php";
             const response = await fetch(searchUrl);
             const info = await response.json();
             title = info.show;
-            startTimestamp = "Time unavailable";
+            startTimestamp = "Unknown duration";
             /*} else if (station === "Hotel Radio Paris") {
                 const searchUrl = "https://hotelradioparis.com/getTrack?c=undefined";
                 title = await fetch(searchUrl); */
@@ -226,10 +226,7 @@ export default async function getCurrentShowInfo(station, num) {
             const response = await fetch(searchUrl);
             const info = await response.json();
             title = info.current_track.title;
-            startTimestamp = "Time unavailable";
-            if (title.contains("lofi"))
-                endTimestamp = "∞";
-
+            startTimestamp = "Unknown duration";
         }
 
         console.log(title);
@@ -246,9 +243,7 @@ export default async function getCurrentShowInfo(station, num) {
         if (title === "" || title === " ")
             title = station;
 
-        if (endTimestamp === "∞")
-            return { title: title, time: endTimestamp };
-        if (startTimestamp === "Time unavailable")
+        if (startTimestamp === "Unknown duration")
             return { title: title, time: startTimestamp };
         if (startTimestamp === "now")
             return { title: title, time: startOf(Moment(), 0, "hour").format("h:mma") + "-" + startOf(Moment().add(endTimestamp, "h"), 0, "hour").format("h:mma") }
